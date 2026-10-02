@@ -1,273 +1,927 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sinchana Devadiga | Developer Profile</title>
-    <link href="https://googleapis.com" rel="stylesheet">
+
+    <title>Sinchana Devadiga | Developer Portfolio</title>
+
     <style>
+
+        /* =========================================================
+           1. CSS VARIABLES
+           ========================================================= */
+
         :root {
-            --bg-color: #0f172a;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --text-color: #f8fafc;
-            --text-muted: #94a3b8;
-            --primary-color: #38bdf8;
-            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-color: #ff4500;
+            --primary-dark: #d93800;
+
+            --background: #f8fafc;
+            --surface: #ffffff;
+
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+
+            --border-color: #e2e8f0;
+
+            --shadow:
+                0 4px 10px rgba(0, 0, 0, 0.08);
+
+            --shadow-hover:
+                0 15px 30px rgba(0, 0, 0, 0.12);
+
+            --radius: 12px;
+
+            --transition:
+                all 0.3s ease;
+        }
+
+
+        /* =========================================================
+           2. RESET
+           ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background-color: var(--background);
+            color: var(--text-primary);
+
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(129, 140, 248, 0.15) 0px, transparent 50%);
-            background-attachment: fixed;
         }
 
-        header {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-            padding: 2.5rem 1rem;
-            text-align: center;
+
+        /* =========================================================
+           3. NAVIGATION BAR
+           ========================================================= */
+
+        .navbar {
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+
+            background-color: rgba(255, 255, 255, 0.95);
+
+            border-bottom:
+                1px solid var(--border-color);
+
+            backdrop-filter: blur(10px);
         }
 
-        header h1 {
-            margin: 0 0 0.5rem 0;
-            font-size: 2.2rem;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .nav-container {
+            max-width: 1100px;
 
-        header p {
-            color: var(--text-muted);
-            margin: 0 0 1.5rem 0;
-            font-weight: 500;
-        }
+            margin: 0 auto;
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+            padding: 18px 30px;
+
             display: flex;
-            justify-content: center;
-            gap: 25px;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
-            color: var(--text-muted);
+        .logo {
+            color: var(--text-primary);
+
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
+
+            font-size: 1.4rem;
+            font-weight: bold;
         }
 
-        nav a:hover {
+        .logo span {
             color: var(--primary-color);
         }
 
-        main {
-            max-width: 800px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
+        .nav-links {
+            list-style: none;
+
+            display: flex;
+
+            gap: 30px;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            color: var(--text-secondary);
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            bottom: -5px;
+
+            width: 0;
+            height: 2px;
+
+            background-color: var(--primary-color);
+
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           4. MAIN CONTAINER
+           ========================================================= */
+
+        .container {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 60px 30px;
         }
 
         section {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            margin-bottom: 100px;
+
+            scroll-margin-top: 100px;
         }
 
-        section:hover {
-            transform: translateY(-3px);
-        }
 
-        h2 {
-            color: var(--text-color);
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.75rem;
-            margin-top: 0;
-            font-size: 1.5rem;
-        }
+        /* =========================================================
+           5. SECTION HEADINGS
+           ========================================================= */
 
-        .skills-list {
+        .section-title {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
+
+            align-items: center;
+
+            gap: 15px;
+
+            font-size: 2rem;
+
+            margin-bottom: 40px;
         }
 
-        .skills-list li {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+        .section-title::after {
+            content: "";
+
+            height: 2px;
+
+            background-color: var(--border-color);
+
+            flex: 1;
+        }
+
+
+        /* =========================================================
+           6. HERO / ABOUT ME
+           ========================================================= */
+
+        .hero {
+            min-height: 70vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 50px 0;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+
+            line-height: 1.1;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
             color: var(--primary-color);
-            padding: 0.6rem 1.2rem;
+        }
+
+        .subtitle {
+            color: var(--primary-color);
+
+            font-size: 1.4rem;
+
+            font-weight: bold;
+
+            margin-bottom: 25px;
+        }
+
+        .about-text {
+            max-width: 700px;
+
+            color: var(--text-secondary);
+
+            font-size: 1.15rem;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            display: inline-block;
+
+            width: fit-content;
+
+            padding: 12px 25px;
+
+            background-color: var(--primary-color);
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: var(--transition);
+        }
+
+        .hero-button:hover {
+            background-color: var(--primary-dark);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 20px rgba(255, 69, 0, 0.25);
+        }
+
+
+        /* =========================================================
+           7. SKILLS - FLEXBOX
+           ========================================================= */
+
+        .skills-container {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .skill {
+            padding: 12px 22px;
+
+            background-color: var(--surface);
+
+            border:
+                1px solid var(--border-color);
+
             border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 600;
+
+            box-shadow: var(--shadow);
+
+            font-weight: 500;
+
+            transition: var(--transition);
+        }
+
+        .skill:hover {
+            color: white;
+
+            background-color: var(--primary-color);
+
+            border-color: var(--primary-color);
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 10px 20px rgba(255, 69, 0, 0.2);
+        }
+
+
+        /* =========================================================
+           8. PROJECTS - CSS GRID
+           ========================================================= */
+
+        .projects-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 25px;
         }
 
         .project-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid var(--border-color);
-            border-left: 4px solid var(--primary-color);
-            padding: 1.5rem;
-            border-radius: 0 12px 12px 0;
-            margin-bottom: 1.5rem;
+            background-color: var(--surface);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: var(--radius);
+
+            padding: 30px;
+
+            box-shadow: var(--shadow);
+
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+
+            border-color: var(--primary-color);
+
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-number {
+            color: var(--primary-color);
+
+            font-size: 0.9rem;
+
+            font-weight: bold;
+
+            margin-bottom: 10px;
         }
 
         .project-card h3 {
-            margin: 0 0 0.5rem 0;
-            color: var(--text-color);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+
+            margin-bottom: 12px;
         }
 
         .project-card p {
-            color: var(--text-muted);
-            margin: 0;
+            color: var(--text-secondary);
+
+            margin-bottom: 20px;
         }
 
-        form {
+        .project-link {
+            color: var(--primary-color);
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================================
+           9. CONTACT SECTION
+           ========================================================= */
+
+        .contact-card {
+            max-width: 650px;
+
+            background-color: var(--surface);
+
+            border:
+                1px solid var(--border-color);
+
+            border-radius: var(--radius);
+
+            padding: 40px;
+
+            box-shadow: var(--shadow);
+        }
+
+        .contact-card form {
             display: flex;
+
             flex-direction: column;
+
             gap: 20px;
         }
 
         .form-group {
             display: flex;
+
             flex-direction: column;
-            gap: 8px;
+
+            gap: 7px;
         }
 
-        label {
-            font-size: 0.9rem;
+        .form-group label {
             font-weight: 600;
-            color: var(--text-muted);
         }
 
-        input, textarea {
-            padding: 0.9rem;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid var(--border-color);
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border:
+                1px solid var(--border-color);
+
             border-radius: 8px;
-            color: var(--text-color);
+
+            background-color: var(--background);
+
+            color: var(--text-primary);
+
             font-family: inherit;
-            transition: border-color 0.2s;
-        }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        button {
-            background: var(--accent-gradient);
-            color: #0f172a;
-            border: none;
-            padding: 1rem;
             font-size: 1rem;
-            font-weight: 700;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: opacity 0.2s;
+
+            transition: var(--transition);
         }
 
-        button:hover {
-            opacity: 0.9;
+        .form-group textarea {
+            min-height: 150px;
+
+            resize: vertical;
         }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+
+            border-color: var(--primary-color);
+
+            box-shadow:
+                0 0 0 3px rgba(255, 69, 0, 0.12);
+        }
+
+        .submit-button {
+            align-self: flex-start;
+
+            padding: 13px 28px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background-color: var(--text-primary);
+
+            color: white;
+
+            font-size: 1rem;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+        }
+
+        .submit-button:hover {
+            background-color: var(--primary-color);
+
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================================================
+           10. FOOTER
+           ========================================================= */
 
         footer {
             text-align: center;
-            padding: 2.5rem;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
+
+            padding: 30px;
+
+            border-top:
+                1px solid var(--border-color);
+
+            color: var(--text-secondary);
         }
+
+
+        /* =========================================================
+           11. TABLET RESPONSIVE DESIGN
+           ========================================================= */
+
+        @media (max-width: 768px) {
+
+            .nav-container {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .container {
+                padding: 45px 20px;
+            }
+
+            .hero {
+                min-height: 60vh;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* =========================================================
+           12. MOBILE RESPONSIVE DESIGN
+           ========================================================= */
+
+        @media (max-width: 600px) {
+
+            .nav-container {
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .nav-links {
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 18px;
+            }
+
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 30px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.7rem;
+
+                letter-spacing: -1px;
+            }
+
+            .subtitle {
+                font-size: 1.15rem;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .contact-card {
+                padding: 25px 20px;
+            }
+
+            .skill {
+                padding: 10px 16px;
+            }
+        }
+
+
+        /* =========================================================
+           13. EXTRA SMALL DEVICES
+           ========================================================= */
+
+        @media (max-width: 400px) {
+
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 0.8rem;
+            }
+
+            .container {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+        }
+
     </style>
 </head>
+
+
 <body>
-    <header>
-        <h1>Sinchana Devadiga</h1>
-        <p>Second year Computer Science and Engineering Student</p>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+
+    <!-- =========================================================
+         NAVIGATION
+         ========================================================= -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="#home" class="logo">
+                Sinchana<span>.</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#skills">Skills</a>
+                    </li>
+
+                    <li>
+                        <a href="#projects">Projects</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+
+                </ul>
+            </nav>
+
+        </div>
+
     </header>
 
-    <main>
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I am a passionate developer focused on building clean, accessible, and user-friendly web applications. I love turning complex problems into elegant code and continuously learning new technologies. I am interested in working on real-world problems that make a positive impact on society.</p>
+
+    <!-- =========================================================
+         MAIN CONTENT
+         ========================================================= -->
+
+    <main class="container">
+
+
+        <!-- =====================================================
+             ABOUT ME
+             ===================================================== -->
+
+        <section id="home" class="hero">
+
+            <h1>
+                Hi, I'm <span>Sinchana Devadiga.</span>
+            </h1>
+
+            <p class="subtitle">
+                Developer & Creative Problem Solver
+            </p>
+
+            <p class="about-text">
+                I am a passionate developer interested in building
+                clean, responsive and user-friendly websites.
+                I enjoy learning new technologies and turning
+                ideas into practical digital solutions.
+            </p>
+
+            <a href="#projects" class="hero-button">
+                View My Work
+            </a>
+
         </section>
+
+
+        <!-- =====================================================
+             SKILLS
+             ===================================================== -->
 
         <section id="skills">
-            <h2>Skills</h2>
-            <ul class="skills-list">
-                <li>HTML5 & CSS3</li>
-                <li>JavaScript (ES6+)</li>
-                <li>React.js</li>
-                <li>Node.js</li>
-                <li>Git & GitHub</li>
-                <li>Responsive Design</li>
-            </ul>
+
+            <h2 class="section-title">
+                Skills
+            </h2>
+
+            <div class="skills-container">
+
+                <div class="skill">
+                    HTML
+                </div>
+
+                <div class="skill">
+                    CSS
+                </div>
+
+                <div class="skill">
+                    JavaScript
+                </div>
+
+                <div class="skill">
+                    Java
+                </div>
+
+                <div class="skill">
+                    Python
+                </div>
+
+                <div class="skill">
+                    SQL
+                </div>
+
+                <div class="skill">
+                    Git & GitHub
+                </div>
+
+
+
         </section>
+
+
+        <!-- =====================================================
+             PROJECTS
+             ===================================================== -->
 
         <section id="projects">
-            <h2>Projects</h2>
-            <article class="project-card">
-                <h3>E-Commerce Dashboard</h3>
-                <p>A real-time sales and inventory tracker built with React and Tailwind CSS. Features interactive charts and dark mode toggles.</p>
-            </article>
-            <article class="project-card">
-                <h3>Task Management API</h3>
-                <p>A secure RESTful API built using Node.js, Express, and MongoDB. Includes JWT authentication and full CRUD functionality.</p>
-            </article>
+
+            <h2 class="section-title">
+                Projects
+            </h2>
+
+            <div class="projects-grid">
+
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 01
+                    </div>
+
+                    <h3>
+                        Developer Portfolio
+                    </h3>
+
+                    <p>
+                        A responsive personal portfolio website
+                        designed to showcase my skills, projects
+                        and developer profile.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 02
+                    </div>
+
+                    <h3>
+                        Web Application
+                    </h3>
+
+                    <p>
+                        A practical web application focused on
+                        responsive design, usability and clean
+                        user interface development.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                <article class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 03
+                    </div>
+
+                    <h3>
+                        Student Management System
+                    </h3>
+
+                    <p>
+                        A project demonstrating programming,
+                        database management and problem-solving
+                        concepts.
+                    </p>
+
+                    <a href="#" class="project-link">
+                        View Project →
+                    </a>
+
+                </article>
+
+
+                
+                    
+
+            </div>
+
         </section>
+
+
+        <!-- =====================================================
+             CONTACT
+             ===================================================== -->
 
         <section id="contact">
-            <h2>Contact Me</h2>
-            <p>Have a project in mind or just want to say hi? Drop a message below!</p>
-            <form action="#" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="How can I help you?" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
+
+            <h2 class="section-title">
+                Contact Me
+            </h2>
+
+            <div class="contact-card">
+
+                <form>
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="submit-button"
+                    >
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
         </section>
+
     </main>
 
-    <footer>
-        <p>&copy; 2026 Sinchana Devadiga. Built with semantic HTML & modern CSS.</p>
-    </footer>
+
+       
 </body>
+
 </html>
